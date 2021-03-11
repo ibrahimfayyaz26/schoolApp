@@ -1,3 +1,3 @@
 # schoolApp
 
-school app frontend backend will be made in nodejs
+School app frontend backend will be developed in nodejs
