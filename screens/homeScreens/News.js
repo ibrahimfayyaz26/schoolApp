@@ -1,10 +1,11 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View, Image } from "react-native";
+import Pdf from "react-native-pdf";
 
 const News = () => {
   return (
-    <View>
-      <Text>News</Text>
+    <View style={{ flex: 1 }}>
+      <Text>hello</Text>
     </View>
   );
 };
