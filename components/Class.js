@@ -3,7 +3,11 @@ import { StyleSheet, Text, View, TouchableOpacity, Image } from "react-native";
 
 const Class = (props) => {
   return (
-    <TouchableOpacity style={{ flex: 1 }} onPress={props.press}>
+    <TouchableOpacity
+      activeOpacity={0.7}
+      style={{ flex: 1 }}
+      onPress={props.press}
+    >
       <View style={styles.container}>
         <View style={styles.imgContainer}>
           <Image style={styles.image} source={{ uri: props.img }} />
@@ -35,5 +39,20 @@ const styles = StyleSheet.create({
   imgContainer: {
     width: "100%",
     height: "80%",
+    borderTopRightRadius: 10,
+    borderTopLeftRadius: 10,
+  },
+  image: {
+    width: "100%",
+    height: "100%",
+  },
+  textContainer: {
+    width: "100%",
+    alignItems: "center",
+    justifyContent: "center",
+    height: "20%",
+  },
+  text: {
+    fontSize: 20,
   },
 });

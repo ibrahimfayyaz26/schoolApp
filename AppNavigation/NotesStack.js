@@ -1,6 +1,8 @@
 import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { View } from "react-native";
+import { useNavigation } from "@react-navigation/native";
+import { MaterialIcons } from "@expo/vector-icons";
 
 // Screens import for main screen
 import NotesM from "../screens/notesScreen/NotesMain";
@@ -11,9 +13,31 @@ import NotesD from "../screens/notesScreen/NotesDetails";
 const stack = createStackNavigator();
 
 const NotesStack = () => {
+  const navigation = useNavigation();
   return (
-    <stack.Navigator>
-      <stack.Screen name="NotesM" component={NotesM} />
+    <stack.Navigator
+      screenOptions={{
+        headerLeft: () => (
+          <View style={{ marginLeft: 10 }}>
+            <MaterialIcons
+              name="menu"
+              size={24}
+              onPress={() => {
+                navigation.openDrawer();
+              }}
+            />
+          </View>
+        ),
+        headerTitleAlign: "center",
+      }}
+    >
+      <stack.Screen
+        name="NotesM"
+        component={NotesM}
+        options={{
+          title: "Notes",
+        }}
+      />
       <stack.Screen name="NotesC" component={NotesC} />
       <stack.Screen name="NotesS" component={NotesS} />
       <stack.Screen name="NotesD" component={NotesD} />
