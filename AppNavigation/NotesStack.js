@@ -38,8 +38,20 @@ const NotesStack = () => {
           title: "Notes",
         }}
       />
-      <stack.Screen name="NotesC" component={NotesC} />
-      <stack.Screen name="NotesS" component={NotesS} />
+      <stack.Screen
+        name="NotesC"
+        component={NotesC}
+        options={(props) => ({
+          headerTitle: props.route.params.name + " Notes",
+        })}
+      />
+      <stack.Screen
+        name="NotesS"
+        component={NotesS}
+        options={(props) => ({
+          headerTitle: props.route.params.class + " Notes",
+        })}
+      />
       <stack.Screen name="NotesD" component={NotesD} />
     </stack.Navigator>
   );
