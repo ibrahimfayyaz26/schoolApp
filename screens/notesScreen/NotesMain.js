@@ -3,7 +3,7 @@ import { StyleSheet, View, FlatList } from "react-native";
 import Class from "../../components/Class";
 import Cat from "../../data/MainNotesCat";
 
-const NotesMain = () => {
+const NotesMain = (props) => {
   return (
     <View style={{ flex: 1 }}>
       <FlatList
@@ -13,7 +13,12 @@ const NotesMain = () => {
           <Class
             name={item.name}
             img={item.img}
-            press={() => console.log("hello")}
+            press={() =>
+              props.navigation.navigate("NotesS", {
+                classId: item.id,
+                class: item.name,
+              })
+            }
           />
         )}
       />
