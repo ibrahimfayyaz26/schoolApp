@@ -1,11 +1,16 @@
 import React, { useState } from "react";
 import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
 import { MaterialIcons } from "@expo/vector-icons";
+import { useDispatch, useSelector } from "react-redux";
+import { favourite } from "../redux/action/NewsAction";
 
 const NewsComp = (props) => {
-  const [isFav, setIsFav] = useState(false);
+  const dispatch = useDispatch();
+  const isFav = useSelector((state) =>
+    state.news.favourite.some((article) => article.id == props.id)
+  );
   return (
-    <TouchableOpacity activeOpacity={0.8} onPress={props.press}>
+    <TouchableOpacity activeOpacity={0.8} onPress={() => console.log("hello")}>
       <View style={styles.container}>
         <View style={styles.imgContainer}>
           <Image
@@ -25,7 +30,7 @@ const NewsComp = (props) => {
             name={isFav ? "favorite" : "favorite-border"}
             size={28}
             color="#72bcd4"
-            onPress={() => console.log("hello")}
+            onPress={() => dispatch(favourite(props.id))}
           />
         </View>
         <View style={styles.desContainer}>
