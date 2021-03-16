@@ -14,7 +14,7 @@ const News = () => {
             title={item.title}
             description={item.description}
             imgUri={item.imgUri}
-            press={() => console.log("hello")}
+            id={item.id}
           />
         )}
       />
