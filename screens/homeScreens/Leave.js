@@ -14,6 +14,7 @@ import {
 } from "react-native";
 import { Formik } from "formik";
 import * as yup from "yup";
+import ImagePik from "../../components/ImagePiker";
 
 let schema = yup.object().shape({
   name: yup.string().required().min(5).max(35),
@@ -47,99 +48,109 @@ const Leave = (props) => {
         ]);
       }}
     >
-      {(props) => (
-        <KeyboardAvoidingView
-          behavior={Platform.OS == "ios" ? "padding" : ""}
-          keyboardVerticalOffset={90}
-          style={{
-            flex: 1,
-            backgroundColor: "white",
-          }}
-        >
-          <ScrollView
+      {(props) => {
+        const imgtaker = (imgUri) => {
+          props.values.imgUri = imgUri;
+          console.log(imgUri);
+        };
+        return (
+          <KeyboardAvoidingView
+            behavior={Platform.OS == "ios" ? "padding" : ""}
+            keyboardVerticalOffset={90}
             style={{
               flex: 1,
+              backgroundColor: "white",
             }}
           >
-            <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-              <View>
-                <View style={styles.container}>
-                  <TextInput
-                    placeholder="Full Name"
-                    value={props.values.name}
-                    onChangeText={props.handleChange("name")}
-                    onBlur={props.handleBlur("name")}
-                    style={styles.textI}
-                  />
-                  <Text style={styles.er}>
-                    {props.touched.name && props.errors.name}
-                  </Text>
-                  <TextInput
-                    placeholder="Phone Number"
-                    value={props.values.number}
-                    onChangeText={props.handleChange("number")}
-                    onBlur={props.handleBlur("number")}
-                    keyboardType="number-pad"
-                    style={styles.textI}
-                  />
-                  <Text style={styles.er}>
-                    {props.touched.number && props.errors.number}
-                  </Text>
-                  <TextInput
-                    placeholder="Class"
-                    value={props.values.class}
-                    onChangeText={props.handleChange("class")}
-                    onBlur={props.handleBlur("class")}
-                    style={styles.textI}
-                  />
-                  <Text style={styles.er}>
-                    {props.touched.class && props.errors.class}
-                  </Text>
-                  <TextInput
-                    placeholder="Section"
-                    value={props.values.section}
-                    onChangeText={props.handleChange("section")}
-                    onBlur={props.handleBlur("section")}
-                    style={styles.textI}
-                  />
-                  <Text style={styles.er}>
-                    {props.touched.section && props.errors.section}
-                  </Text>
-                  <TextInput
-                    placeholder="Class Incharge"
-                    value={props.values.classIncharge}
-                    onChangeText={props.handleChange("classIncharge")}
-                    onBlur={props.handleBlur("classIncharge")}
-                    style={styles.textI}
-                  />
-                  <Text style={styles.er}>
-                    {props.touched.classIncharge && props.errors.classIncharge}
-                  </Text>
-                  <TextInput
-                    placeholder="Reason for leave"
-                    value={props.values.reason}
-                    onChangeText={props.handleChange("reason")}
-                    onBlur={props.handleBlur("reason")}
-                    multiline={true}
-                    style={styles.leave}
-                  />
-                  <Text style={styles.er}>
-                    {props.touched.reason && props.errors.reason}
-                  </Text>
-                  <View style={{ marginTop: 10 }}>
-                    <Button
-                      title="Submit Leave"
-                      onPress={props.handleSubmit}
-                      color="purple"
+            <ScrollView
+              style={{
+                flex: 1,
+              }}
+            >
+              <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+                <View>
+                  <View style={styles.container}>
+                    <TextInput
+                      placeholder="Full Name"
+                      value={props.values.name}
+                      onChangeText={props.handleChange("name")}
+                      onBlur={props.handleBlur("name")}
+                      style={styles.textI}
                     />
+                    <Text style={styles.er}>
+                      {props.touched.name && props.errors.name}
+                    </Text>
+                    <TextInput
+                      placeholder="Phone Number"
+                      value={props.values.number}
+                      onChangeText={props.handleChange("number")}
+                      onBlur={props.handleBlur("number")}
+                      keyboardType="number-pad"
+                      style={styles.textI}
+                    />
+                    <Text style={styles.er}>
+                      {props.touched.number && props.errors.number}
+                    </Text>
+                    <TextInput
+                      placeholder="Class"
+                      value={props.values.class}
+                      onChangeText={props.handleChange("class")}
+                      onBlur={props.handleBlur("class")}
+                      style={styles.textI}
+                    />
+                    <Text style={styles.er}>
+                      {props.touched.class && props.errors.class}
+                    </Text>
+                    <TextInput
+                      placeholder="Section"
+                      value={props.values.section}
+                      onChangeText={props.handleChange("section")}
+                      onBlur={props.handleBlur("section")}
+                      style={styles.textI}
+                    />
+                    <Text style={styles.er}>
+                      {props.touched.section && props.errors.section}
+                    </Text>
+                    <TextInput
+                      placeholder="Class Incharge"
+                      value={props.values.classIncharge}
+                      onChangeText={props.handleChange("classIncharge")}
+                      onBlur={props.handleBlur("classIncharge")}
+                      style={styles.textI}
+                    />
+                    <Text style={styles.er}>
+                      {props.touched.classIncharge &&
+                        props.errors.classIncharge}
+                    </Text>
+                    <TextInput
+                      placeholder="Reason for leave"
+                      value={props.values.reason}
+                      onChangeText={props.handleChange("reason")}
+                      onBlur={props.handleBlur("reason")}
+                      multiline={true}
+                      style={styles.leave}
+                    />
+                    <Text style={styles.er}>
+                      {props.touched.reason && props.errors.reason}
+                    </Text>
+                    <View style={{ width: "90%" }}>
+                      <ImagePik imgFun={imgtaker} />
+                    </View>
+                    <View style={{ marginTop: 10 }}>
+                      <Button
+                        title="Submit Leave"
+                        onPress={props.handleSubmit}
+                        color="purple"
+                      />
+                    </View>
                   </View>
+                  <Text style={{ height: 100 }} />
                 </View>
-                <Text style={{ height: 100 }} />
-              </View>
-            </TouchableWithoutFeedback>
-          </ScrollView>
-        </KeyboardAvoidingView>
-      )}
+              </TouchableWithoutFeedback>
+            </ScrollView>
+          </KeyboardAvoidingView>
+        );
+      }}
     </Formik>
   );
 };
