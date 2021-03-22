@@ -33,16 +33,24 @@ const HeaderLeft = () => {
 
 const NewsStack = () => {
   return (
-    <stack.Navigator
-      screenOptions={{
-        headerLeft: () => {
-          return <HeaderLeft />;
-        },
-        headerTitleAlign: "center",
-      }}
-    >
-      <stack.Screen name="News" component={News} />
-      <stack.Screen name="NewsDetails" component={NewsDetails} />
+    <stack.Navigator>
+      <stack.Screen
+        name="News"
+        component={News}
+        options={{
+          headerLeft: () => {
+            return <HeaderLeft />;
+          },
+          headerTitleAlign: "center",
+        }}
+      />
+      <stack.Screen
+        name="NewsDetails"
+        component={NewsDetails}
+        options={{
+          headerTitleAlign: "center",
+        }}
+      />
     </stack.Navigator>
   );
 };

@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, ScrollView, FlatList } from "react-native";
 import NComp from "../../components/NewsComp";
 import dataDum from "../../data/dummy";
 
-const News = () => {
+const News = (props) => {
   return (
     <View style={{ flex: 1 }}>
       <FlatList
@@ -15,6 +15,7 @@ const News = () => {
             description={item.description}
             imgUri={item.imgUri}
             id={item.id}
+            navigation={props.navigation}
           />
         )}
       />
