@@ -3,7 +3,7 @@ import { StyleSheet, FlatList, View } from "react-native";
 import { useSelector } from "react-redux";
 import NComp from "../../components/NewsComp";
 
-const Favourite = () => {
+const Favourite = (props) => {
   const data = useSelector((state) => state.news.favourite);
   return (
     <View style={{ flex: 1 }}>
@@ -16,6 +16,7 @@ const Favourite = () => {
             description={item.description}
             imgUri={item.imgUri}
             id={item.id}
+            navigation={props.navigation}
           />
         )}
       />

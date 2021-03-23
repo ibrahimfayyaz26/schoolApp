@@ -51,7 +51,6 @@ const Leave = (props) => {
       {(props) => {
         const imgtaker = (imgUri) => {
           props.values.imgUri = imgUri;
-          console.log(imgUri);
         };
         return (
           <KeyboardAvoidingView

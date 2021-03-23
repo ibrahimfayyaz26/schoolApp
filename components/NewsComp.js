@@ -10,7 +10,15 @@ const NewsComp = (props) => {
     state.news.favourite.some((article) => article.id == props.id)
   );
   return (
-    <TouchableOpacity activeOpacity={0.8} onPress={() => console.log("hello")}>
+    <TouchableOpacity
+      activeOpacity={0.8}
+      onPress={() =>
+        props.navigation.navigate("NewsDetails", {
+          id: props.id,
+          title: props.title,
+        })
+      }
+    >
       <View style={styles.container}>
         <View style={styles.imgContainer}>
           <Image
