@@ -15,31 +15,29 @@ const NewsDetails = (props) => {
 
   const data = useSelector((state) => state.news.News.find((a) => a.id == id));
   return (
-    <ScrollView style={styles.container}>
+    <ScrollView style={{ flex: 1, backgroundColor: "white" }}>
       <View style={{ flex: 1, backgroundColor: "white" }}>
-        <View style={{ width: "100%", height: "50%" }}>
+        <View style={{ width: "100%", height: 280 }}>
           <Image
             style={{ width: "100%", height: "100%" }}
             source={{ uri: data.imgUri }}
           />
         </View>
-        <View style={{ margin: 10, alignItems: "center", height: "10%" }}>
+        <View style={{ margin: 5, alignItems: "center", height: 50 }}>
           <Text style={{ fontSize: 25, fontStyle: "italic" }}>
             {data.title}
           </Text>
         </View>
 
-        <View style={{ margin: 10, alignItems: "center", height: "35%" }}>
+        <View style={{ margin: 5, alignItems: "center", height: 200 }}>
           <Text style={{ fontSize: 20 }}>{data.description}</Text>
         </View>
         <View
           style={{
-            margin: 10,
             alignItems: "flex-end",
-            marginTop: 20,
             justifyContent: "flex-end",
             flex: 1,
-            marginBottom: 20,
+            marginTop: 30,
           }}
         >
           <Text style={{ fontSize: 16 }}>By Principal Of Daanish School </Text>
@@ -50,7 +48,3 @@ const NewsDetails = (props) => {
 };
 
 export default NewsDetails;
-
-const styles = StyleSheet.create({
-  container: { flex: 1 },
-});
